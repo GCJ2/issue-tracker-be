@@ -1,0 +1,15 @@
+{
+  "name": "issue-tracker-be",
+  "version": "1.0.0",
+  "description": "Issue Tracker Back End",
+  "main": "index.js",
+  "repository": "https://github.com/GCJ2/issue-tracker-be.git",
+  "author": "Greg Johnston <gcjohnston91@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
