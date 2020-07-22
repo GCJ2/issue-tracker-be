@@ -6,7 +6,7 @@ exports.seed = function (knex) {
       return knex('issues').insert([
         {
           id: 1,
-          title: 'Infinite Loop in Component "x"',
+          title: 'Infinite Loop in UserDisplay Component',
           description: 'useEffect on line 16 triggers infinite loop',
           importance: 'Dire',
           created_by: 1,
@@ -31,7 +31,7 @@ exports.seed = function (knex) {
           importance: 'Major',
           created_by: 2,
           last_updated_by: 2,
-          status: true,
+          status: false,
           assigned_to: 4
         },
       ]);

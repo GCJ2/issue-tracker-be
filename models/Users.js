@@ -12,14 +12,15 @@ module.exports = {
 };
 
 async function add(user) {
-  return await db('users')
-    .insert(user, ['user_name', 'role'])
+  return db('users')
+    .insert(user, ['user_name', 'role']);
 }
 
 function getAllUsers() {
   return db('users')
     .join('roles', {'users.role': 'roles.id'})
-    .select('user_name',
+    .select(
+      'user_name',
       'first_name',
       'last_name',
       'roles.title')
@@ -30,7 +31,8 @@ function findByUserName(user_name) {
     .whereRaw('LOWER(user_name) LIKE ?',
       '%' + user_name.toLowerCase() + '%')
     .join('roles', {'users.role': 'roles.id'})
-    .select('user_name',
+    .select(
+      'user_name',
       'first_name',
       'last_name',
       'roles.title')
@@ -41,7 +43,8 @@ function findByID(id) {
   return db('users')
     .join('roles', {'users.role': 'roles.id'})
     .where({'users.id' : id})
-    .select('users.user_name',
+    .select(
+      'users.user_name',
       'users.first_name',
       'users.last_name',
       'roles.title')
