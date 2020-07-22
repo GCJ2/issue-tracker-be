@@ -29,8 +29,7 @@ router.get('/id/:id', (req, res) => {
 
 router.get('/user/:username', (req, res) => {
   const {username} = req.params;
-  console.log(username)
-  Users.findByUserName(username.toUpperCase())
+  Users.findByUserName(username)
     .then(user => {
         if (user) {
           res.status(200).json(user)

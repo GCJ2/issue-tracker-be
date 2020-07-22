@@ -22,7 +22,7 @@ function getAllUsers() {
 
 function findByUserName(user_name) {
   return db('users')
-    .where({user_name})
+    .whereRaw('LOWER(user_name) LIKE ?', '%'+user_name.toLowerCase()+'%')
     .first();
 }
 
