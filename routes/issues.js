@@ -11,4 +11,17 @@ router.get('/', (req, res) => {
   })
 });
 
+router.get('/:id', (req, res) => {
+  const {id} = req.params;
+  Issues.findByID(id)
+    .then(issue => {
+      if (issue) {
+        res.status(200).json(issue)
+      } else {
+        res.status(404).json({message: 'Could not find issue'})
+      }
+    }).catch(error =>
+  res.status(500).json(error))
+});
+
 module.exports = router;
