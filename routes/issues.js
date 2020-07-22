@@ -21,7 +21,28 @@ router.get('/:id', (req, res) => {
         res.status(404).json({message: 'Could not find issue'})
       }
     }).catch(error =>
-  res.status(500).json(error))
+    res.status(500).json(error))
+});
+
+router.post('/', (req, res) => {
+  Issues.addIssue(req.body)
+    .then(issue => {
+      res.status(200).json(issue)
+    }).catch(error =>
+    res.status(500).json({message: error}))
+});
+
+router.delete('/:id', (req, res) => {
+  const {id} = req.params;
+  Issues.deleteIssue(id)
+    .then(count => {
+      if (count > 0) {
+        res.status(200).json({message: 'Deleted'})
+      } else {
+        res.status(404).json({message: `Issue of ID ${id} could not be found.`})
+      }
+    }).catch(error =>
+    res.status(500).json({message: error}))
 });
 
 module.exports = router;

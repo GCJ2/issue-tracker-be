@@ -42,12 +42,10 @@ router.get('/user/:username', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log(req.body);
   Users.add(req.body)
     .then(user => {
       res.status(200).json(user)
-    })
-    .catch(error =>
+    }).catch(error =>
       res.status(500).json({message: error}))
 });
 
@@ -58,10 +56,9 @@ router.delete('/id/:id', (req, res) => {
       if (count > 0) {
         res.status(200).json({message: 'Deleted'})
       } else {
-        res.status(404).json({message: `ID of ${id} not found`})
+        res.status(404).json({message: `User with ID of ${id} not found`})
       }
-    })
-    .catch(error =>
+    }).catch(error =>
       res.status(500).json({message: error}))
 });
 
@@ -75,8 +72,7 @@ router.patch('/id/:id', (req, res) => {
       } else {
         res.status(404).json({message: "User not found"})
       }
-    })
-    .catch(error =>
+    }).catch(error =>
       res.status(500).json({message: error}))
 });
 

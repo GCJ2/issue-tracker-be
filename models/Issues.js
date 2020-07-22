@@ -3,9 +3,16 @@ const config = require('../knexfile');
 const db = knex(config.development);
 
 module.exports = {
+  addIssue,
   getAllIssues,
-  findByID
+  findByID,
+  deleteIssue
 };
+
+async function addIssue(issue) {
+  return db('issues')
+    .insert(issue, issue)
+}
 
 function getAllIssues() {
   return db('issues')
@@ -45,4 +52,10 @@ function findByID(id) {
     .join('users AS created', 'issues.created_by', 'created.id')
     .join('users AS updated', 'issues.last_updated_by', 'updated.id')
     .first();
+}
+
+function deleteIssue(id) {
+  return db('issues')
+    .where({id})
+    .del()
 }
