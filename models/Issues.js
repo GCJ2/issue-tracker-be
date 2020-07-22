@@ -7,21 +7,24 @@ module.exports = {
 };
 
 function getAllIssues() {
-  return db('issues')
-    .join('users', {'issues.assigned_to' : 'users.id'})
+  return db
     .select(
       'issues.id',
       'issues.title',
       'issues.description',
       'issues.importance',
-      'issues.created_by',
+      'created.user_name AS created_by',
       'issues.status',
-      'issues.assigned_to',
-      'issues.last_updated_by',
-      'users.user_name',
+      'assign.user_name AS assigned_to',
+      'updated.user_name AS last_updated_by',
       'issues.created_at',
       'issues.updated_at',
     )
+    .from('issues')
+    .join('users AS assign', 'issues.assigned_to',  'assign.id')
+    .join('users AS created', 'issues.created_by',  'created.id')
+    .join('users AS updated', 'issues.last_updated_by',  'updated.id')
+
     // .select('*')
     // .from('issues')
     // .leftOuterJoin('users', function () {
