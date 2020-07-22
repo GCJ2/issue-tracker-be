@@ -6,7 +6,8 @@ module.exports = {
   addIssue,
   getAllIssues,
   findByID,
-  deleteIssue
+  deleteIssue,
+  updateIssue
 };
 
 async function addIssue(issue) {
@@ -58,4 +59,13 @@ function deleteIssue(id) {
   return db('issues')
     .where({id})
     .del()
+}
+
+function updateIssue(id, changes) {
+  return db('issues')
+    .where({id})
+    .update(changes)
+    .then(() => {
+      return findByID(id)
+    })
 }

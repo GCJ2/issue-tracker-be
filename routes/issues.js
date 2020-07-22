@@ -45,4 +45,18 @@ router.delete('/:id', (req, res) => {
     res.status(500).json({message: error}))
 });
 
+router.patch('/:id', (req, res) => {
+  const {id} = req.params;
+  const changes = req.body;
+  Issues.updateIssue(id, changes)
+    .then(issue => {
+      if (issue) {
+        res.status(200).json(issue)
+      } else {
+        res.status(404).json({message: 'Issue not found'})
+      }
+    }).catch(error =>
+    res.status(500).json({message: error}))
+});
+
 module.exports = router;
