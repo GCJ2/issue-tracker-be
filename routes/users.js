@@ -17,8 +17,7 @@ router.get('/id/:id', (req, res) => {
     .then(user => {
         if (user) {
           res.status(200).json(user)
-        }
-        else {
+        } else {
           res.status(404).json({message: 'User not found'})
         }
       }
@@ -47,6 +46,35 @@ router.post('/', (req, res) => {
   Users.add(req.body)
     .then(user => {
       res.status(200).json(user)
+    })
+    .catch(error =>
+      res.status(500).json({message: error}))
+});
+
+router.delete('/id/:id', (req, res) => {
+  const {id} = req.params;
+  Users.deleteUser(id)
+    .then(count => {
+      if (count > 0) {
+        res.status(200).json({message: 'Deleted'})
+      } else {
+        res.status(404).json({message: `ID of ${id} not found`})
+      }
+    })
+    .catch(error =>
+      res.status(500).json({message: error}))
+});
+
+router.patch('/id/:id', (req, res) => {
+  const {id} = req.params;
+  const changes = req.body;
+  Users.updateUser(id, changes)
+    .then(user => {
+      if (user) {
+        res.status(200).json(user)
+      } else {
+        res.status(404).json({message: "User not found"})
+      }
     })
     .catch(error =>
       res.status(500).json({message: error}))

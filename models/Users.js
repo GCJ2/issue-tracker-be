@@ -13,22 +13,38 @@ module.exports = {
 
 async function add(user) {
   return await db('users')
-    .insert(user, ['user_name' , 'role'])
+    .insert(user, ['user_name', 'role'])
 }
 
 function getAllUsers() {
   return db('users')
+    .join('roles', {'users.role': 'roles.id'})
+    .select('user_name',
+      'first_name',
+      'last_name',
+      'roles.title')
 }
 
 function findByUserName(user_name) {
   return db('users')
-    .whereRaw('LOWER(user_name) LIKE ?', '%'+user_name.toLowerCase()+'%')
+    .whereRaw('LOWER(user_name) LIKE ?',
+      '%' + user_name.toLowerCase() + '%')
+    .join('roles', {'users.role': 'roles.id'})
+    .select('user_name',
+      'first_name',
+      'last_name',
+      'roles.title')
     .first();
 }
 
 function findByID(id) {
   return db('users')
     .where({id})
+    .join('roles', {'users.role': 'roles.id'})
+    .select('user_name',
+      'first_name',
+      'last_name',)
+    // 'roles.title')
     .first();
 }
 
