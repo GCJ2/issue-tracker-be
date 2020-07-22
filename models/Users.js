@@ -39,12 +39,12 @@ function findByUserName(user_name) {
 
 function findByID(id) {
   return db('users')
-    .where({id})
     .join('roles', {'users.role': 'roles.id'})
-    .select('user_name',
-      'first_name',
-      'last_name',)
-    // 'roles.title')
+    .where({'users.id' : id})
+    .select('users.user_name',
+      'users.first_name',
+      'users.last_name',
+      'roles.title')
     .first();
 }
 
