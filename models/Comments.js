@@ -5,7 +5,8 @@ const db = knex(config.development);
 module.exports = {
   getAllComments,
   getCommentByIssueId,
-  getCommentById
+  getCommentById,
+  addComment
 };
 
 function getAllComments() {
@@ -47,8 +48,8 @@ function getCommentById(id) {
     .where({'comments.id': id})
 }
 
-// async function addComment(comment) {
-//   [id] = await db('comments')
-//     .insert(comment);
-//   return getCommentByIssueId(id)
-// }
+async function addComment(comment) {
+  const [id] = await db('comments')
+    .insert(comment);
+  return getCommentById(id)
+}

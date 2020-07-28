@@ -36,4 +36,14 @@ router.get('/:id', (req, res) => {
     }).catch(error =>
     res.status(500).json(error))
 });
+
+router.post('/', (req, res) => {
+  Comments.addComment(req.body)
+    .then(comment => {
+      res.status(201).json(comment)
+    }).catch(error =>
+    res.status(500).json({message: error}))
+});
+
+
 module.exports = router;

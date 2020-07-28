@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   Issues.addIssue(req.body)
     .then(issue => {
-      res.status(200).json(issue)
+      res.status(201).json(issue)
     }).catch(error =>
     res.status(500).json({message: error}))
 });
