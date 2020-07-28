@@ -16,6 +16,7 @@ router.post('/register', (req, res) => {
     .then(user => {
       res.status(200).json(user)
     }).catch(error => {
+    console.log(error)
     res.status(500).json({message: 'Please supply a user_name, password, first_name, and last_name and ensure that the username is available', error})
   })
 });
