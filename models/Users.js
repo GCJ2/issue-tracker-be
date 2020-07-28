@@ -8,7 +8,8 @@ module.exports = {
   findByUserName,
   findByID,
   deleteUser,
-  updateUser
+  updateUser,
+  findUserForLogIn
 };
 
 async function add(user) {
@@ -36,6 +37,16 @@ function findByUserName(user_name) {
       'first_name AS firstName',
       'last_name AS lastName',
       'roles.title AS role')
+    .first();
+}
+
+function findUserForLogIn(user_name) {
+  return db('users')
+    .whereRaw('LOWER(user_name) LIKE ?',
+      '%' + user_name.toLowerCase() + '%')
+    .select(
+      'user_name AS userName',
+      'users.password AS password')
     .first();
 }
 

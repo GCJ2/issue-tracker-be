@@ -19,11 +19,12 @@ server.get('/api', logger, (req, res) => {
 
 server.use('/api/auth', logger, authRouter);
 server.use('/api/users', logger,  userRouter);
-server.use('/api/issues', logger, issueRouter);
-server.use('/api/comments', logger, commentsRouter);
+// server.use('/api/issues', logger, issueRouter);
+// server.use('/api/comments', logger, commentsRouter);
+
 // server.use('/api/users', logger, restricted, userRouter);
-// server.use('/api/issues', logger, restricted, issueRouter);
-// server.use('/api/comments', logger, restricted, commentsRouter);
+server.use('/api/issues', logger, restricted, issueRouter);
+server.use('/api/comments', logger, restricted, commentsRouter);
 
 
 server.use((req, res) => {
