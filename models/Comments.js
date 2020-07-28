@@ -4,7 +4,8 @@ const db = knex(config.development);
 
 module.exports = {
   getAllComments,
-  getCommentByIssueId
+  getCommentByIssueId,
+  getCommentById
 };
 
 function getAllComments() {
@@ -12,10 +13,12 @@ function getAllComments() {
     .join('users', {'comments.createdBy': 'users.id'})
     .join('issues', {'comments.issue': 'issues.id'})
     .select(
-      'issues.title AS Issue',
+      'issues.title AS issue',
+      'issues.id AS issueId',
       'comments.comment',
+      'comments.id as commentId',
       'users.user_name AS createdBy',
-      'comments.created_at')
+      'comments.created_at AS createdAt')
 }
 
 function getCommentByIssueId(id) {
@@ -23,9 +26,29 @@ function getCommentByIssueId(id) {
     .join('users', {'comments.createdBy': 'users.id'})
     .join('issues', {'comments.issue': 'issues.id'})
     .select(
-      'issues.title AS Issue',
+      // 'issues.title AS issue',
+      // 'issues.id AS issueId',
+      'comments.comment',
+      'comments.id as commentId',
+      'users.user_name AS createdBy',
+      'comments.created_at AS createdAt')
+    .where({'issues.id': id})
+}
+
+function getCommentById(id) {
+  return db('comments')
+    .join('users', {'comments.createdBy': 'users.id'})
+    .join('issues', {'comments.issue': 'issues.id'})
+    .select(
+      // 'issues.title AS Issue',
       'comments.comment',
       'users.user_name AS createdBy',
       'comments.created_at')
-    .where({'issues.id' : id})
+    .where({'comments.id': id})
 }
+
+// async function addComment(comment) {
+//   [id] = await db('comments')
+//     .insert(comment);
+//   return getCommentByIssueId(id)
+// }
