@@ -60,15 +60,13 @@ On success, returns status code 201, the user object, and auth token
 ```json
 {
   "user": {
-    "id": 2,
-    "username": "amanda",
-    "email": "admin@email.com",
-    "created_at": "2019-11-24 22:30:29",
-    "avatar_url": "https://static.wixstat...",
-    "location": null,
-    "about": "Share your story about your art."
-  },
-  "token": "eyJhbGciOiJ..."
+          "id": 18,
+          "userName": "JSmith12",
+          "firstName": "John",
+          "lastName": "Smith",
+          "role": "Developer"
+      },
+  "token": "JhbGciOiJIUzI1NiIsI..."
 }
 ```
 
