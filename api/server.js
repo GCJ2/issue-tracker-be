@@ -5,6 +5,7 @@ const server = express();
 const logger = require('../logger');
 const userRouter = require('../routes/users');
 const issueRouter = require('../routes/issues');
+const commentsRouter = require('../routes/comments');
 
 server.use(helmet());
 server.use(cors());
@@ -16,6 +17,7 @@ server.get('/api', logger, (req, res) => {
 
 server.use('/api/users', logger, userRouter);
 server.use('/api/issues', logger, issueRouter);
+server.use('/api/comments', logger, commentsRouter);
 
 
 server.use((req, res) => {
