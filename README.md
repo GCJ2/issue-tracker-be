@@ -42,33 +42,7 @@ or administrators by administrators only
 ```
 </details>
 
-<details>
-<summary><b>POST - Logging in a user</b></summary>
 
-<b>Endpoint:</b> `/auth/login`
-
-Requires an object with a valid username and password:
-
-```json
-{
-  "user_name": "JSmith12",
-  "password": "8675309"
-}
-```
-
-On success, returns status code 201, the user object, and auth token
-```json
-{
-  "user": {
-          "id": 18,
-          "userName": "JSmith12",
-          "firstName": "John",
-          "lastName": "Smith",
-          "role": "Developer"
-      },
-  "token": "JhbGciOiJIUzI1NiIsI..."
-}
-```
 
 </details>
 
