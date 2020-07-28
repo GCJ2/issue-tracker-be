@@ -20,10 +20,10 @@ function getAllUsers() {
   return db('users')
     .join('roles', {'users.role': 'roles.id'})
     .select(
-      'user_name',
-      'first_name',
-      'last_name',
-      'roles.title')
+      'user_name AS userName',
+      'first_name AS firstName',
+      'last_name AS lastName',
+      'roles.title AS role')
 }
 
 function findByUserName(user_name) {
@@ -32,10 +32,10 @@ function findByUserName(user_name) {
       '%' + user_name.toLowerCase() + '%')
     .join('roles', {'users.role': 'roles.id'})
     .select(
-      'user_name',
-      'first_name',
-      'last_name',
-      'roles.title')
+      'user_name AS userName',
+      'first_name AS firstName',
+      'last_name AS lastName',
+      'roles.title AS role')
     .first();
 }
 
@@ -44,10 +44,10 @@ function findByID(id) {
     .join('roles', {'users.role': 'roles.id'})
     .where({'users.id' : id})
     .select(
-      'users.user_name',
-      'users.first_name',
-      'users.last_name',
-      'roles.title')
+      'user_name AS userName',
+      'first_name AS firstName',
+      'last_name AS lastName',
+      'roles.title AS role')
     .first();
 }
 

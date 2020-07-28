@@ -26,7 +26,7 @@ router.get('/id/:id', (req, res) => {
   })
 });
 
-router.get('/user/:username', (req, res) => {
+router.get('/username/:username', (req, res) => {
   const {username} = req.params;
   Users.findByUserName(username)
     .then(user => {
