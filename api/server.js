@@ -3,6 +3,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const server = express();
 const logger = require('../logger');
+const restricted = require('../auth/restrictedMiddleware');
 const userRouter = require('../routes/users');
 const issueRouter = require('../routes/issues');
 const commentsRouter = require('../routes/comments');
@@ -15,7 +16,7 @@ server.get('/api', logger, (req, res) => {
   res.json({message: 'Working'})
 });
 
-server.use('/api/users', logger, userRouter);
+server.use('/api/users', logger, restricted, userRouter);
 server.use('/api/issues', logger, issueRouter);
 server.use('/api/comments', logger, commentsRouter);
 
