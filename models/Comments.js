@@ -7,7 +7,8 @@ module.exports = {
   getCommentByIssueId,
   getCommentById,
   addComment,
-  deleteComment
+  deleteComment,
+  updateComment
 };
 
 function getAllComments() {
@@ -28,10 +29,8 @@ function getCommentByIssueId(id) {
     .join('users', {'comments.createdBy': 'users.id'})
     .join('issues', {'comments.issue': 'issues.id'})
     .select(
-      // 'issues.title AS issue',
-      // 'issues.id AS issueId',
       'comments.comment',
-      'comments.id as commentId',
+      'comments.id AS commentId',
       'users.user_name AS createdBy',
       'comments.created_at AS createdAt')
     .where({'issues.id': id})
@@ -42,7 +41,7 @@ function getCommentById(id) {
     .join('users', {'comments.createdBy': 'users.id'})
     .join('issues', {'comments.issue': 'issues.id'})
     .select(
-      // 'issues.title AS Issue',
+      'comments.id AS commentID',
       'comments.comment',
       'users.user_name AS createdBy',
       'comments.created_at')
@@ -59,4 +58,13 @@ function deleteComment(id) {
   return db('comments')
     .where({id})
     .del()
+}
+
+function updateComment(id, changes) {
+  return db('comments')
+    .where({id})
+    .update(changes)
+    .then(() => {
+      return getCommentById(id)
+    })
 }

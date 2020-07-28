@@ -24,12 +24,25 @@ router.get('/:id', (req, res) => {
     res.status(500).json(error))
 });
 
+router.get('/user/:id', (req, res) => {
+  const {id} = req.params;
+  Issues.getIssuesByUserID(id)
+    .then(issues => {
+      if (issues) {
+        res.status(200).json(issues)
+      } else {
+        res.status(404).json({message: 'This user has no assigned issues'})
+      }
+    }).catch(error =>
+    res.status(500).json(error))
+});
+
 router.post('/', (req, res) => {
   Issues.addIssue(req.body)
     .then(issue => {
       res.status(201).json(issue)
     }).catch(error =>
-    res.status(500).json({message: error}))
+    res.status(500).json(error))
 });
 
 router.delete('/:id', (req, res) => {
@@ -42,7 +55,7 @@ router.delete('/:id', (req, res) => {
         res.status(404).json({message: `Issue of ID ${id} could not be found.`})
       }
     }).catch(error =>
-    res.status(500).json({message: error}))
+    res.status(500).json(error))
 });
 
 router.patch('/:id', (req, res) => {
@@ -56,7 +69,7 @@ router.patch('/:id', (req, res) => {
         res.status(404).json({message: 'Issue not found'})
       }
     }).catch(error =>
-    res.status(500).json({message: error}))
+    res.status(500).json(error))
 });
 
 module.exports = router;

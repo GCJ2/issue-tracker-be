@@ -6,6 +6,7 @@ module.exports = {
   addIssue,
   getAllIssues,
   findByID,
+  getIssuesByUserID,
   deleteIssue,
   updateIssue
 };
@@ -53,6 +54,26 @@ function findByID(id) {
     .join('users AS created', 'issues.created_by', 'created.id')
     .join('users AS updated', 'issues.last_updated_by', 'updated.id')
     .first();
+}
+
+function getIssuesByUserID(id) {
+  return db('issues')
+    .where({'issues.assigned_to' : id})
+    .select(
+      'assign.user_name AS assigned_to',
+      'issues.id',
+      'issues.title',
+      'issues.description',
+      'issues.importance',
+      'created.user_name AS created_by',
+      'issues.status',
+      'updated.user_name AS last_updated_by',
+      'issues.created_at',
+      'issues.updated_at',
+    )
+    .join('users AS assign', 'issues.assigned_to', 'assign.id')
+    .join('users AS created', 'issues.created_by', 'created.id')
+    .join('users AS updated', 'issues.last_updated_by', 'updated.id')
 }
 
 function deleteIssue(id) {

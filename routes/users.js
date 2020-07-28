@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
     .then(user => {
       res.status(200).json(user)
     }).catch(error =>
-      res.status(500).json({message: error}))
+      res.status(500).json(error))
 });
 
 router.delete('/id/:id', (req, res) => {
@@ -59,7 +59,7 @@ router.delete('/id/:id', (req, res) => {
         res.status(404).json({message: `User with ID of ${id} not found`})
       }
     }).catch(error =>
-      res.status(500).json({message: error}))
+      res.status(500).json(error))
 });
 
 router.patch('/id/:id', (req, res) => {
@@ -73,7 +73,7 @@ router.patch('/id/:id', (req, res) => {
         res.status(404).json({message: "User not found"})
       }
     }).catch(error =>
-      res.status(500).json({message: error}))
+      res.status(500).json(error))
 });
 
 module.exports = router;

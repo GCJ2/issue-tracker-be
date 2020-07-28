@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
     .then(comment => {
       res.status(201).json(comment)
     }).catch(error =>
-    res.status(500).json({message: error}))
+    res.status(500).json(error))
 });
 
 router.delete('/:id', (req, res) => {
@@ -55,7 +55,21 @@ router.delete('/:id', (req, res) => {
         res.status(404).json({message: `Comment of ID ${id} could not be found`})
       }
     }).catch(error =>
-    res.status(500).json({message: error}))
+    res.status(500).json(error))
+});
+
+router.patch('/:id', (req, res) => {
+  const {id} = req.params;
+  const changes = req.body;
+  Comments.updateComment(id, changes)
+    .then(comment => {
+      if (comment) {
+        res.status(200).json(comment)
+      } else {
+        res.status(404).json({message: 'Comment not found'})
+      }
+    }).catch(error =>
+    res.status(500).json(error))
 });
 
 

@@ -34,6 +34,26 @@ exports.seed = function (knex) {
           status: false,
           assigned_to: 4
         },
+        {
+          id: 4,
+          title: 'Test 4',
+          description: 'Test 4',
+          importance: 'Major',
+          created_by: 2,
+          last_updated_by: 1,
+          status: false,
+          assigned_to: 4
+        },
+        {
+          id: 5,
+          title: 'Test 5',
+          description: 'Test 5',
+          importance: 'Major',
+          created_by: 1,
+          last_updated_by: 1,
+          status: false,
+          assigned_to: 1
+        },
       ]);
     });
 };
