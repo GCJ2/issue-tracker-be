@@ -4,7 +4,7 @@ const cors = require('cors');
 const server = express();
 const logger = require('../logger');
 const userRouter = require('../routes/users');
-const issueRouter = require('../routes/issues')
+const issueRouter = require('../routes/issues');
 
 server.use(helmet());
 server.use(cors());
