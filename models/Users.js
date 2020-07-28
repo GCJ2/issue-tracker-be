@@ -13,8 +13,9 @@ module.exports = {
 };
 
 async function add(user) {
-  return db('users')
-    .insert(user, ['user_name', 'role']);
+  const [id] = await db('users')
+    .insert(user, "id");
+  return findByID(id)
 }
 
 function getAllUsers() {
@@ -53,7 +54,7 @@ function findUserForLogIn(user_name) {
 function findByID(id) {
   return db('users')
     .join('roles', {'users.role': 'roles.id'})
-    .where({'users.id' : id})
+    .where({'users.id': id})
     .select(
       'user_name AS userName',
       'first_name AS firstName',
