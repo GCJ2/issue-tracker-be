@@ -6,7 +6,8 @@ module.exports = {
   getAllComments,
   getCommentByIssueId,
   getCommentById,
-  addComment
+  addComment,
+  deleteComment
 };
 
 function getAllComments() {
@@ -52,4 +53,10 @@ async function addComment(comment) {
   const [id] = await db('comments')
     .insert(comment);
   return getCommentById(id)
+}
+
+function deleteComment(id) {
+  return db('comments')
+    .where({id})
+    .del()
 }
