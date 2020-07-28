@@ -7,7 +7,7 @@ const generateToken = require('./generateToken');
 router.post('/register', (req, res) => {
   const credentials = req.body;
   const {user_name, password} = credentials;
-  //const userName = user_name;
+
   if (!(user_name && password)) {
     return res.status(400).json({message: 'Username and password are required'})
   }
@@ -26,11 +26,12 @@ router.post('/login', (req, res) => {
   if (!(user_name && password)) {
     return res.status(400).json({message: 'Username and Password are required'})
   }
-  Users.findUserForLogIn(user_name)
+  Users.findByUserName(user_name)
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = generateToken(user);
-        res.status(201).json({message: `Welcome back ${user_name}`, token})
+        delete user.password;
+        res.status(201).json({user, token})
       } else {
         res.status(401).json({message: 'Invalid credentials'});
       }

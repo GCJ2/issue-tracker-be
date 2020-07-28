@@ -34,20 +34,12 @@ function findByUserName(user_name) {
       '%' + user_name.toLowerCase() + '%')
     .join('roles', {'users.role': 'roles.id'})
     .select(
+      'users.id AS id',
       'user_name AS userName',
+      'password',
       'first_name AS firstName',
       'last_name AS lastName',
       'roles.title AS role')
-    .first();
-}
-
-function findUserForLogIn(user_name) {
-  return db('users')
-    .whereRaw('LOWER(user_name) LIKE ?',
-      '%' + user_name.toLowerCase() + '%')
-    .select(
-      'user_name AS userName',
-      'users.password AS password')
     .first();
 }
 

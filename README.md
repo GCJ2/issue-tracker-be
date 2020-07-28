@@ -37,9 +37,41 @@ or administrators by administrators only
         "lastName": "Smith",
         "role": "Developer"
     },
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTU5NzUzODMsImV4cCI6MTU5NjA2MTc4M30.NXGcfut08vYjLwKymbV-pRFaMSjRW1mGhFP_Q9BC3IM"
+    "token": "eyJhbGciO..."
 }
 ```
+</details>
+
+<details>
+<summary><b>POST - Logging in a user</b></summary>
+
+<b>Endpoint:</b> `/auth/login`
+
+Requires an object with a valid username and password:
+
+```json
+{
+  "user_name": "JSmith12",
+  "password": "8675309"
+}
+```
+
+On success, returns status code 201, the user object, and auth token
+```json
+{
+  "user": {
+    "id": 2,
+    "username": "amanda",
+    "email": "admin@email.com",
+    "created_at": "2019-11-24 22:30:29",
+    "avatar_url": "https://static.wixstat...",
+    "location": null,
+    "about": "Share your story about your art."
+  },
+  "token": "eyJhbGciOiJ..."
+}
+```
+
 </details>
 
 
