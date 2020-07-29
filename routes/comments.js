@@ -50,7 +50,7 @@ router.delete('/:id', (req, res) => {
   Comments.deleteComment(id)
     .then(count => {
       if (count > 0) {
-        res.status(200).json({message: 'Deleted'})
+        res.status(200).json({message: 'Comment deleted'})
       } else {
         res.status(404).json({message: `Comment of ID ${id} could not be found`})
       }
