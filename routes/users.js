@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
   })
 });
 
-router.get('/id/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const {id} = req.params;
     const user = await Users.findByID(id);

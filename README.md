@@ -170,7 +170,7 @@ Object contains user's information as well as currently assigned issues
     "id": 4,
     "userName": "QuieroPizza",
     "firstName": "Gabe",
-    "lastName": "Anguiano",
+    "lastName": "Smith",
     "role": "Guest",
     "issues": [
         {
