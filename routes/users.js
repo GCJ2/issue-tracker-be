@@ -13,26 +13,13 @@ router.get('/', (req, res) => {
 });
 
 router.get('/id/:id', async (req, res) => {
-//   const {id} = req.params;
-//   const user = await Users.findByID(id);
-//   user.issues = await Issues.getIssuesByUserID(id);
-//   delete user.password;
-//   console.log(user.issues);
-//   res.status(200).json(user);
-// });
   try {
     const {id} = req.params;
     const user = await Users.findByID(id);
     if (user) {
       user.issues = await Issues.getIssuesByUserID(id);
       delete user.password;
-      Promise.all(
-        user.issues.map(async issue => {
-          console.log(issue)
-        })
-      ).then(issue =>
-        res.status(200).json(user)
-      )
+      res.status(200).json(user)
     } else {
       res.status(404).json({message: 'Could not find user'})
     }
@@ -40,6 +27,34 @@ router.get('/id/:id', async (req, res) => {
     res.status(500).json(error)
   }
 });
+
+  // const {id} = req.params;
+  // const user = await Users.findByID(id);
+  // user.issues = await Issues.getIssuesByUserID(id);
+  // delete user.password;
+  // console.log(user.issues);
+  // res.status(200).json(user);
+// });
+//   try {
+//     const {id} = req.params;
+//     const user = await Users.findByID(id);
+//     if (user) {
+//       user.issues = await Issues.getIssuesByUserID(id);
+//       delete user.password;
+//       Promise.all(
+//         user.issues.map(async issue => {
+//           console.log(issue)
+//         })
+//       ).then(issue =>
+//         res.status(200).json(user)
+//       )
+//     } else {
+//       res.status(404).json({message: 'Could not find user'})
+//     }
+//   } catch (error) {
+//     res.status(500).json(error)
+//   }
+// });
 
 
 //   const {id} = req.params;
