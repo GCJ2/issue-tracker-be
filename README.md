@@ -5,7 +5,11 @@ webtokens and bcrypt.
 
 # Endpoints
 
+<!------------- Authentication ------------->
+
 ### Authentication
+
+<!------------- Register a new User ------------->
 
 <details>
 
@@ -42,6 +46,8 @@ or administrators by administrators only
 ```
 </details>
 
+<!------------- Logging in user ------------->
+
 <details>
 <summary><b>POST - Logging in a user</b></summary>
 
@@ -72,7 +78,11 @@ On success, returns status code 201, the user object, and auth token
 
 </details>
 
+<!------------- User ------------->
+
 ### User
+
+<!------------- Get all users ------------->
 
 <details>
 
@@ -80,7 +90,9 @@ On success, returns status code 201, the user object, and auth token
 
 <b>Endpoint:</b> `/users`
 
-No request body required but token is needed
+No request body needed
+
+Token required
 
 On success, returns status code 200 and array of users
 
@@ -112,13 +124,17 @@ On success, returns status code 200 and array of users
 
 </details>
 
+<!------------- Get user by ID ------------->
+
 <details>
 
 <summary><b>GET - Get user by ID</b></summary>
 
 <b>Endpoint:</b> `/users/:id`
 
-No request body required but token is needed
+No request body needed
+
+Token required
 
 On success, returns status code 200 and user object
 
@@ -152,13 +168,17 @@ Object contains user's information as well as currently assigned issues
 
 </details>
 
+<!------------- Get user by username ------------->
+
 <details>
 
 <summary><b>GET - Get user by username</b></summary>
 
 <b>Endpoint:</b> `/users/:username`
 
-No request body required but token is needed
+No request body needed
+
+Token needed
 
 On success, returns status code 200 and user object
 
@@ -203,8 +223,11 @@ Object contains user's information as well as currently assigned issues
 
 </details>
 
+<!------------- Edit a user by ID ------------->
+
+
 <details>
-<summary><b>PUT - Edit a user</b></summary>
+<summary><b>PUT - Edit a user by ID</b></summary>
 
 <b>Endpoint:</b> `/users/:id` 
 
@@ -240,12 +263,17 @@ On success, returns status code 200 and user object
 
 </details>
 
+<!------------- Delete user by ID ------------->
+
 <details>
 <summary><b>DELETE - Delete User by ID</b></summary>
 
 <b>Endpoint:</b> `/users/:id` 
-</br>Authorization token required in headers. Only the user can delete their own account.
-</br>No request body required.
+Authorization token required in headers
+
+Only the user can delete their own account
+
+No request body required
 
 On success, returns status code 200 and success message
 
@@ -253,6 +281,278 @@ On success, returns status code 200 and success message
 ```json
 {
     "message": "User deleted"
+}
+```
+
+</details>
+
+### Issues
+
+<!------------- Issues ------------->
+
+<details>
+
+<!------------- Get all issues ------------->
+
+<summary><b>GET - Get all issues</b></summary>
+
+<b>Endpoint:</b> `/issues`
+
+No request body needed
+
+Token required
+
+On success, returns status code 200 and array of issues
+
+```json
+[
+    {
+        "id": 1,
+        "title": "Infinite Loop in UserDisplay Component",
+        "description": "useEffect on line 16 triggers infinite loop",
+        "importance": "Dire",
+        "created_by": "GCJ2",
+        "status": 1,
+        "assigned_to": "CodyyLee",
+        "last_updated_by": "GCJ2",
+        "created_at": "2020-07-29 17:24:22",
+        "updated_at": "2020-07-29 17:24:22"
+    },
+    {
+        "id": 2,
+        "title": "CSS issues in Header",
+        "description": "Header not responding to media queries",
+        "importance": "Minor",
+        "created_by": "GCJ2",
+        "status": 1,
+        "assigned_to": "Reececap",
+        "last_updated_by": "GCJ2",
+        "created_at": "2020-07-29 17:24:22",
+        "updated_at": "2020-07-29 17:24:22"
+    },
+    {
+        "id": 3,
+        "title": "JSON Web Tokens Not Active",
+        "description": "JSON Web Tokens need to replace session cookies",
+        "importance": "Major",
+        "created_by": "CodyyLee",
+        "status": 0,
+        "assigned_to": "QuieroPizza",
+        "last_updated_by": "CodyyLee",
+        "created_at": "2020-07-29 17:24:22",
+        "updated_at": "2020-07-29 17:24:22"
+    }
+]
+```
+
+</details>
+
+<!------------- Get Issue by issue ID ------------->
+
+
+<details>
+
+<summary><b>GET - Get Issue by issue ID</b></summary>
+
+<b>Endpoint:</b> `/issues/:id`
+
+No request body needed
+
+Token required
+
+On success, returns status code 200 and issue object
+
+Object contains issue information as well as comments attached to issue
+
+<i>(Example: "baseURL/issues/2")</i>
+
+```json
+{
+    "id": 1,
+    "title": "Infinite Loop in UserDisplay Component",
+    "description": "useEffect on line 16 triggers infinite loop",
+    "importance": "Dire",
+    "created_by": "GCJ2",
+    "status": 1,
+    "assigned_to": "CodyyLee",
+    "last_updated_by": "Reececap",
+    "created_at": "2020-07-29 17:24:22",
+    "updated_at": "2020-07-29 17:24:22",
+    "comments": [
+        {
+            "commentId": 34,
+            "comment": "Updated useEffect dependency array.",
+            "createdBy": "CodyLee",
+            "createdAt": "2020-07-29 17:24:22"
+        },
+        {
+            "commentId": 35,
+            "comment": "Infinite loop fixed, flagged for closing.",
+            "createdBy": "ReeceCap",
+            "createdAt": "2020-07-29 17:24:22"
+        },
+{
+            "commentId": 36,
+            "comment": "Issue closed",
+            "createdBy": "GCJ2",
+            "createdAt": "2020-07-29 17:24:22"
+        }
+    ]
+}
+```
+
+</details>
+
+<!------------- Get Issues by user ID ------------->
+
+<details>
+
+<summary><b>GET - Get Issue by user ID</b></summary>
+
+<b>Endpoint:</b> `/issues/users/:id`
+
+No request body needed
+
+Token required
+
+On success, returns status code 200 and array of issues
+assigned to that particular user ID
+
+<i>(Example: "baseURL/issues/user/4")</i>
+
+```json
+[
+    {
+        "id": 3,
+        "title": "JSON Web Tokens Not Active",
+        "description": "JSON Web Tokens need to replace session cookies",
+        "importance": "Major",
+        "assigned_to": "QuieroPizza",
+        "created_by": "CodyyLee",
+        "status": 0,
+        "last_updated_by": "GCJ2",
+        "created_at": "2020-07-29 17:24:22",
+        "updated_at": "2020-07-29 17:24:22"
+    },
+    {
+        "id": 4,
+        "title": "Test 4",
+        "description": "Test 4",
+        "importance": "Major",
+        "assigned_to": "QuieroPizza",
+        "created_by": "CodyyLee",
+        "status": 0,
+        "last_updated_by": "GCJ2",
+        "created_at": "2020-07-29 17:24:22",
+        "updated_at": "2020-07-29 17:24:22"
+    }
+]
+```
+
+</details>
+
+<!------------- Post a new issue ------------->
+
+<details>
+
+<summary><b>POST - Posting a new issue</b></summary>
+
+<b>Endpoint:</b> `/issues`
+
+Request body requires a title, description, importance, 
+created_by(user ID), last_updated_by(user ID) and 
+assigned_to(user ID)
+
+Token required
+
+<i>(Example: "baseURL/issues")</i>
+
+```json
+{
+    "title": "Update README",
+    "description": "Test 5",
+    "importance": "Major",
+    "created_by": 1,
+    "last_updated_by": 1,
+    "assigned_to": 3
+}
+```
+
+On success, returns status code 201, the user object, 
+and the id of the issue created
+
+
+```json
+[
+    13
+]
+```
+</details>
+
+<!------------- Delete issue by ID ------------->
+
+<details>
+<summary><b>DELETE - Delete issue by ID</b></summary>
+
+<b>Endpoint:</b> `/issues/:id` 
+
+No request body needed
+
+Token required
+
+Only managers can delete issues
+
+On success, returns status code 200 and success message
+
+<i>(Example: "baseURL/users/21")</i>
+```json
+{
+    "message": "Issue deleted"
+}
+```
+
+</details>
+
+<!------------- Edit an issue by ID ------------->
+
+
+<details>
+<summary><b>PUT - Edit an issue by ID</b></summary>
+
+<b>Endpoint:</b> `/users/:id` 
+
+Authorization token required in headers
+ 
+Only the user and system admin may edit user data
+
+Body of request contains changes to be made 
+
+<i>(Example: "baseURL/issues/12")</i>
+
+```json
+{
+    "title": "Update README",
+    "description": "Add endpoints",
+    "importance": "Major",
+    "assigned_to": 3,
+    "last_updated_by": 1
+}
+```
+
+On success, returns status code 200 and issue object
+
+```json
+{
+    "id": 12,
+    "title": "Update README",
+    "description": "Add endpoints",
+    "importance": "Major",
+    "created_by": "GCJ2",
+    "status": 1,
+    "assigned_to": "Reececap",
+    "last_updated_by": "GCJ2",
+    "created_at": "2020-07-29 17:54:17",
+    "updated_at": "2020-07-29 17:54:17"
 }
 ```
 

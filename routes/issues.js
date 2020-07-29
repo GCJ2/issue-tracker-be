@@ -25,18 +25,6 @@ router.get('/:id', async (req, res) => {
   } catch (error) {
     res.status(500).json(error)
   }
-
-
-  // const {id} = req.params;
-  // Issues.findByID(id)
-  //   .then(issue => {
-  //     if (issue) {
-  //       res.status(200).json(issue)
-  //     } else {
-  //       res.status(404).json({message: 'Could not find issue'})
-  //     }
-  //   }).catch(error =>
-  //   res.status(500).json(error))
 });
 
 router.get('/user/:id', (req, res) => {
@@ -65,7 +53,7 @@ router.delete('/:id', (req, res) => {
   Issues.deleteIssue(id)
     .then(count => {
       if (count > 0) {
-        res.status(200).json({message: 'Deleted'})
+        res.status(200).json({message: 'Issue deleted'})
       } else {
         res.status(404).json({message: `Issue of ID ${id} could not be found.`})
       }

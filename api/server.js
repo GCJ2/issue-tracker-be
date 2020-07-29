@@ -13,7 +13,7 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
-server.get('/api', logger, (req, res) => {
+server.get('/', logger, (req, res) => {
   res.json({message: 'Working'})
 });
 
@@ -22,9 +22,9 @@ server.use('/api/auth', logger, authRouter);
 // server.use('/api/issues', logger, issueRouter);
 // server.use('/api/comments', logger, commentsRouter);
 
-server.use('/api/users', logger, restricted, userRouter);
-server.use('/api/issues', logger, restricted, issueRouter);
-server.use('/api/comments', logger, restricted, commentsRouter);
+server.use('/users', logger, restricted, userRouter);
+server.use('/issues', logger, restricted, issueRouter);
+server.use('/comments', logger, restricted, commentsRouter);
 
 
 server.use((req, res) => {
