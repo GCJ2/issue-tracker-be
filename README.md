@@ -290,9 +290,9 @@ On success, returns status code 200 and success message
 
 <!------------- Issues ------------->
 
-<details>
 
 <!------------- Get all issues ------------->
+<details>
 
 <summary><b>GET - Get all issues</b></summary>
 
