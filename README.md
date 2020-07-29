@@ -13,7 +13,7 @@ webtokens and bcrypt.
 
 <b>Endpoint:</b> `/auth/register`
 
-Requires a userName, password, first, and last name
+Requires a user_name, password, first, and last name
 
 ```json
 {
@@ -72,5 +72,43 @@ On success, returns status code 201, the user object, and auth token
 
 </details>
 
+### User
 
+<details>
+
+<summary><b>Get - Get all users</b></summary>
+
+<b>Endpoint:</b> `/users`
+
+No request body required but token is needed
+
+On success, returns status code 200 and array of users
+
+```json
+[
+    {
+        "id": 1,
+        "userName": "JSmith12",
+        "firstName": "John",
+        "lastName": "Smith",
+        "role": "Admin"
+    },
+    {
+        "id": 2,
+        "userName": "CodyyLee",
+        "firstName": "Cody",
+        "lastName": "Lee",
+        "role": "Manager"
+    },
+    {
+        "id": 3,
+        "userName": "Reececap",
+        "firstName": "Reece",
+        "lastName": "Gabriel",
+        "role": "Developer"
+    }
+]
+```
+
+</details>
 

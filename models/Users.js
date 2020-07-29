@@ -1,6 +1,8 @@
 const knex = require('knex');
+
 const config = require('../knexfile');
 const db = knex(config.development);
+
 
 module.exports = {
   add,
@@ -8,8 +10,7 @@ module.exports = {
   findByUserName,
   findByID,
   deleteUser,
-  updateUser,
-  findUserForLogIn
+  updateUser
 };
 
 async function add(user) {
@@ -22,6 +23,7 @@ function getAllUsers() {
   return db('users')
     .join('roles', {'users.role': 'roles.id'})
     .select(
+      'users.id AS id',
       'user_name AS userName',
       'first_name AS firstName',
       'last_name AS lastName',
@@ -48,12 +50,15 @@ function findByID(id) {
     .join('roles', {'users.role': 'roles.id'})
     .where({'users.id': id})
     .select(
+      'users.id AS id',
       'user_name AS userName',
+      'password',
       'first_name AS firstName',
       'last_name AS lastName',
       'roles.title AS role')
     .first();
 }
+
 
 function deleteUser(id) {
   return db('users')
