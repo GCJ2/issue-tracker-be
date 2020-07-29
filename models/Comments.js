@@ -16,8 +16,8 @@ function getAllComments() {
     .join('users', {'comments.createdBy': 'users.id'})
     .join('issues', {'comments.issue': 'issues.id'})
     .select(
-      'issues.title AS issue',
       'issues.id AS issueId',
+      'issues.title AS issue',
       'comments.comment',
       'comments.id as commentId',
       'users.user_name AS createdBy',
@@ -29,8 +29,8 @@ function getCommentByIssueId(id) {
     .join('users', {'comments.createdBy': 'users.id'})
     .join('issues', {'comments.issue': 'issues.id'})
     .select(
-      'comments.comment',
       'comments.id AS commentId',
+      'comments.comment',
       'users.user_name AS createdBy',
       'comments.created_at AS createdAt')
     .where({'issues.id': id})

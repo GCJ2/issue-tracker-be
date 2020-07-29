@@ -60,11 +60,11 @@ function getIssuesByUserID(id) {
   return db('issues')
     .where({'issues.assigned_to' : id})
     .select(
-      'assign.user_name AS assigned_to',
       'issues.id',
       'issues.title',
       'issues.description',
       'issues.importance',
+      'assign.user_name AS assigned_to',
       'created.user_name AS created_by',
       'issues.status',
       'updated.user_name AS last_updated_by',

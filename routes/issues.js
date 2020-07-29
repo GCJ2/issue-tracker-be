@@ -1,5 +1,6 @@
 const express = require('express');
 const Issues = require('../models/Issues');
+const Comments = require('../models/Comments');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -11,17 +12,31 @@ router.get('/', (req, res) => {
   })
 });
 
-router.get('/:id', (req, res) => {
-  const {id} = req.params;
-  Issues.findByID(id)
-    .then(issue => {
-      if (issue) {
-        res.status(200).json(issue)
-      } else {
-        res.status(404).json({message: 'Could not find issue'})
-      }
-    }).catch(error =>
-    res.status(500).json(error))
+router.get('/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const issue = await Issues.findByID(id);
+    if (issue) {
+      issue.comments = await Comments.getCommentByIssueId(id);
+      res.status(200).json(issue);
+    } else {
+      res.status(404).json({message: 'Could not find issue'})
+    }
+  } catch (error) {
+    res.status(500).json(error)
+  }
+
+
+  // const {id} = req.params;
+  // Issues.findByID(id)
+  //   .then(issue => {
+  //     if (issue) {
+  //       res.status(200).json(issue)
+  //     } else {
+  //       res.status(404).json({message: 'Could not find issue'})
+  //     }
+  //   }).catch(error =>
+  //   res.status(500).json(error))
 });
 
 router.get('/user/:id', (req, res) => {
