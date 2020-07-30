@@ -22,9 +22,9 @@ server.use('/users', logger, restricted, userRouter);
 server.use('/issues', logger, restricted, issueRouter);
 server.use('/comments', logger, restricted, commentsRouter);
 
-// server.use('/users', logger, userRouter);
-// server.use('/issues', logger, issueRouter);
-// server.use('/comments', logger, commentsRouter);
+server.use('/uup', logger, userRouter);
+server.use('/iup', logger, issueRouter);
+server.use('/cup', logger, commentsRouter);
 
 
 server.use((req, res) => {
