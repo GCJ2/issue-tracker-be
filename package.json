@@ -2,6 +2,10 @@
   "name": "issue-tracker-be",
   "version": "1.0.0",
   "description": "Issue Tracker Back End",
+  "scripts": {
+    "server": "nodemon index.js",
+    "start": "node index.js"
+  },
   "main": "index.js",
   "repository": "https://github.com/GCJ2/issue-tracker-be.git",
   "author": "Greg Johnston <gcjohnston91@gmail.com>",

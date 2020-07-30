@@ -7,7 +7,7 @@ const restricted = require('../auth/restrictedMiddleware');
 const userRouter = require('../routes/users');
 const issueRouter = require('../routes/issues');
 const commentsRouter = require('../routes/comments');
-const authRouter = require('../auth/authRoutes')
+const authRouter = require('../auth/authRoutes');
 
 server.use(helmet());
 server.use(cors());
@@ -18,9 +18,7 @@ server.get('/', logger, (req, res) => {
 });
 
 server.use('/api/auth', logger, authRouter);
-// server.use('/api/users', logger,  userRouter);
-// server.use('/api/issues', logger, issueRouter);
-// server.use('/api/comments', logger, commentsRouter);
+
 
 server.use('/users', logger, restricted, userRouter);
 server.use('/issues', logger, restricted, issueRouter);
