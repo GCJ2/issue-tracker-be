@@ -7,7 +7,6 @@ const generateToken = require('./generateToken');
 router.post('/register', (req, res) => {
   const credentials = req.body;
   const {user_name, password} = credentials;
-
   if (!(user_name && password)) {
     return res.status(400).json({message: 'Username and password are required'})
   }

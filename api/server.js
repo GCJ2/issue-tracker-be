@@ -17,7 +17,7 @@ server.get('/', logger, (req, res) => {
   res.json({message: 'Working'})
 });
 
-server.use('/api/auth', logger, authRouter);
+server.use('/auth', logger, authRouter);
 
 
 server.use('/users', logger, restricted, userRouter);
