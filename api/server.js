@@ -18,9 +18,9 @@ server.get('/', logger, (req, res) => {
 });
 
 server.use('/auth', logger, authRouter);
-server.use('/users', logger, restricted, userRouter);
-server.use('/issues', logger, restricted, issueRouter);
-server.use('/comments', logger, restricted, commentsRouter);
+server.use('/users', logger, userRouter);
+server.use('/issues', logger, issueRouter);
+server.use('/comments', logger,  commentsRouter);
 
 
 
