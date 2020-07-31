@@ -1,5 +1,7 @@
 # Issue Tracker Back End
 
+baseURL: https://issue-tracker-be.herokuapp.com/
+
 A REST API using Node.js, Express, knex.js, and SQLite with JSON
 webtokens and bcrypt.
 
