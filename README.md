@@ -134,7 +134,7 @@ On success, returns status code 200 and array of users
 
 <summary><b>GET - Get user by ID</b></summary>
 
-<b>Endpoint:</b> `/user/:id`
+<b>Endpoint:</b> `/users/:id`
 
 No request body needed
 
@@ -412,7 +412,7 @@ Object contains issue information as well as comments attached to issue
 
 <summary><b>GET - Get Issue by user ID</b></summary>
 
-<b>Endpoint:</b> `/issues/users/:id`
+<b>Endpoint:</b> `/issues/user/:id`
 
 No request body needed
 
