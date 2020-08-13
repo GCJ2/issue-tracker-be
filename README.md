@@ -23,10 +23,10 @@ Requires a user_name, password, first, and last name
 
 ```json
 {
-    "user_name": "JSmith12",
-    "password": "8675309",
-    "first_name": "John",
-    "last_name": "Smith"
+  "user_name": "JSmith12",
+  "password": "8675309",
+  "first_name": "John",
+  "last_name": "Smith"
 }
 ```
 
@@ -37,15 +37,16 @@ or administrators by administrators only
 
 ```json
 {
-    "user": {
-        "userName": "JSmith12",
-        "firstName": "John",
-        "lastName": "Smith",
-        "role": "Developer"
-    },
-    "token": "eyJhbGciO..."
+  "user": {
+    "userName": "JSmith12",
+    "firstName": "John",
+    "lastName": "Smith",
+    "role": "Developer"
+  },
+  "token": "eyJhbGciO..."
 }
 ```
+
 </details>
 
 <!------------- Logging in user ------------->
@@ -65,15 +66,16 @@ Requires an object with a valid username and password:
 ```
 
 On success, returns status code 201, the user object, and auth token
+
 ```json
 {
   "user": {
-          "id": 18,
-          "userName": "JSmith12",
-          "firstName": "John",
-          "lastName": "Smith",
-          "role": "Developer"
-      },
+    "id": 18,
+    "userName": "JSmith12",
+    "firstName": "John",
+    "lastName": "Smith",
+    "role": "Developer"
+  },
   "token": "JhbGciOiJIUzI1NiIsI..."
 }
 ```
@@ -100,27 +102,27 @@ On success, returns status code 200 and array of users
 
 ```json
 [
-    {
-        "id": 1,
-        "userName": "JSmith12",
-        "firstName": "John",
-        "lastName": "Smith",
-        "role": "Admin"
-    },
-    {
-        "id": 2,
-        "userName": "CodyyLee",
-        "firstName": "Cody",
-        "lastName": "Lee",
-        "role": "Manager"
-    },
-    {
-        "id": 3,
-        "userName": "Reececap",
-        "firstName": "Reece",
-        "lastName": "Gabriel",
-        "role": "Developer"
-    }
+  {
+    "id": 1,
+    "userName": "JSmith12",
+    "firstName": "John",
+    "lastName": "Smith",
+    "role": "Admin"
+  },
+  {
+    "id": 2,
+    "userName": "CodyyLee",
+    "firstName": "Cody",
+    "lastName": "Lee",
+    "role": "Manager"
+  },
+  {
+    "id": 3,
+    "userName": "Reececap",
+    "firstName": "Reece",
+    "lastName": "Gabriel",
+    "role": "Developer"
+  }
 ]
 ```
 
@@ -132,7 +134,7 @@ On success, returns status code 200 and array of users
 
 <summary><b>GET - Get user by ID</b></summary>
 
-<b>Endpoint:</b> `/users/:id`
+<b>Endpoint:</b> `/user/:id`
 
 No request body needed
 
@@ -146,25 +148,25 @@ Object contains user's information as well as currently assigned issues
 
 ```json
 {
-    "id": 2,
-    "userName": "CodyyLee",
-    "firstName": "Cody",
-    "lastName": "Lee",
-    "role": "Manager",
-    "issues": [
-        {
-            "id": 1,
-            "title": "Infinite Loop in UserDisplay Component",
-            "description": "useEffect on line 16 triggers infinite loop",
-            "importance": "Dire",
-            "assigned_to": "CodyyLee",
-            "created_by": "GCJ2",
-            "status": 1,
-            "last_updated_by": "Reececap",
-            "created_at": "2020-07-28 17:32:00",
-            "updated_at": "2020-07-28 17:32:00"
-        }
-    ]
+  "id": 2,
+  "userName": "CodyyLee",
+  "firstName": "Cody",
+  "lastName": "Lee",
+  "role": "Manager",
+  "issues": [
+    {
+      "id": 1,
+      "title": "Infinite Loop in UserDisplay Component",
+      "description": "useEffect on line 16 triggers infinite loop",
+      "importance": "Dire",
+      "assigned_to": "CodyyLee",
+      "created_by": "GCJ2",
+      "status": 1,
+      "last_updated_by": "Reececap",
+      "created_at": "2020-07-28 17:32:00",
+      "updated_at": "2020-07-28 17:32:00"
+    }
+  ]
 }
 ```
 
@@ -187,39 +189,40 @@ On success, returns status code 200 and user object
 Object contains user's information as well as currently assigned issues
 
 <i>(Example: baseURL/users/username/QuieroPizza)</i>
+
 ```json
 {
-    "id": 4,
-    "userName": "QuieroPizza",
-    "firstName": "Gabe",
-    "lastName": "Smith",
-    "role": "Guest",
-    "issues": [
-        {
-            "id": 3,
-            "title": "JSON Web Tokens Not Active",
-            "description": "JSON Web Tokens need to replace session cookies",
-            "importance": "Major",
-            "assigned_to": "QuieroPizza",
-            "created_by": "CodyyLee",
-            "status": 0,
-            "last_updated_by": "GCJ2",
-            "created_at": "2020-07-28 17:32:00",
-            "updated_at": "2020-07-28 17:32:00"
-        },
-        {
-            "id": 4,
-            "title": "Test 4",
-            "description": "Test 4",
-            "importance": "Major",
-            "assigned_to": "QuieroPizza",
-            "created_by": "CodyyLee",
-            "status": 0,
-            "last_updated_by": "GCJ2",
-            "created_at": "2020-07-28 17:32:00",
-            "updated_at": "2020-07-28 17:32:00"
-        }
-    ]
+  "id": 4,
+  "userName": "QuieroPizza",
+  "firstName": "Gabe",
+  "lastName": "Smith",
+  "role": "Guest",
+  "issues": [
+    {
+      "id": 3,
+      "title": "JSON Web Tokens Not Active",
+      "description": "JSON Web Tokens need to replace session cookies",
+      "importance": "Major",
+      "assigned_to": "QuieroPizza",
+      "created_by": "CodyyLee",
+      "status": 0,
+      "last_updated_by": "GCJ2",
+      "created_at": "2020-07-28 17:32:00",
+      "updated_at": "2020-07-28 17:32:00"
+    },
+    {
+      "id": 4,
+      "title": "Test 4",
+      "description": "Test 4",
+      "importance": "Major",
+      "assigned_to": "QuieroPizza",
+      "created_by": "CodyyLee",
+      "status": 0,
+      "last_updated_by": "GCJ2",
+      "created_at": "2020-07-28 17:32:00",
+      "updated_at": "2020-07-28 17:32:00"
+    }
+  ]
 }
 ```
 
@@ -227,26 +230,25 @@ Object contains user's information as well as currently assigned issues
 
 <!------------- Edit a user by ID ------------->
 
-
 <details>
 <summary><b>PATCH - Edit a user by ID</b></summary>
 
-<b>Endpoint:</b> `/users/:id` 
+<b>Endpoint:</b> `/users/:id`
 
 Authorization token required in headers
- 
+
 Only the user and system admin may edit user data
 
-Body of request contains changes to be made 
+Body of request contains changes to be made
 
 <i>(Example: baseURL/users/2)</i>
 
 ```json
 {
-    "user_name": "GCJ2",
-    "password": "hashedPassword2",
-    "first_name": "Greg",
-    "last_name": "Johnson"
+  "user_name": "GCJ2",
+  "password": "hashedPassword2",
+  "first_name": "Greg",
+  "last_name": "Johnson"
 }
 ```
 
@@ -254,12 +256,12 @@ On success, returns status code 200 and user object
 
 ```json
 {
-    "id": 1,
-    "userName": "GCJ2",
-    "password": "hashedPassword2",
-    "firstName": "Greg",
-    "lastName": "Johnson",
-    "role": "Admin"
+  "id": 1,
+  "userName": "GCJ2",
+  "password": "hashedPassword2",
+  "firstName": "Greg",
+  "lastName": "Johnson",
+  "role": "Admin"
 }
 ```
 
@@ -270,7 +272,7 @@ On success, returns status code 200 and user object
 <details>
 <summary><b>DELETE - Delete User by ID</b></summary>
 
-<b>Endpoint:</b> `/users/:id` 
+<b>Endpoint:</b> `/users/:id`
 Authorization token required in headers
 
 Only the user can delete their own account
@@ -280,9 +282,10 @@ No request body required
 On success, returns status code 200 and success message
 
 <i>(Example: baseURL/users/21)</i>
+
 ```json
 {
-    "message": "User deleted"
+  "message": "User deleted"
 }
 ```
 
@@ -291,7 +294,6 @@ On success, returns status code 200 and success message
 ### Issues
 
 <!------------- Issues ------------->
-
 
 <!------------- Get all issues ------------->
 <details>
@@ -308,49 +310,48 @@ On success, returns status code 200 and array of issues
 
 ```json
 [
-    {
-        "id": 1,
-        "title": "Infinite Loop in UserDisplay Component",
-        "description": "useEffect on line 16 triggers infinite loop",
-        "importance": "Dire",
-        "created_by": "GCJ2",
-        "status": 1,
-        "assigned_to": "CodyyLee",
-        "last_updated_by": "GCJ2",
-        "created_at": "2020-07-29 17:24:22",
-        "updated_at": "2020-07-29 17:24:22"
-    },
-    {
-        "id": 2,
-        "title": "CSS issues in Header",
-        "description": "Header not responding to media queries",
-        "importance": "Minor",
-        "created_by": "GCJ2",
-        "status": 1,
-        "assigned_to": "Reececap",
-        "last_updated_by": "GCJ2",
-        "created_at": "2020-07-29 17:24:22",
-        "updated_at": "2020-07-29 17:24:22"
-    },
-    {
-        "id": 3,
-        "title": "JSON Web Tokens Not Active",
-        "description": "JSON Web Tokens need to replace session cookies",
-        "importance": "Major",
-        "created_by": "CodyyLee",
-        "status": 0,
-        "assigned_to": "QuieroPizza",
-        "last_updated_by": "CodyyLee",
-        "created_at": "2020-07-29 17:24:22",
-        "updated_at": "2020-07-29 17:24:22"
-    }
+  {
+    "id": 1,
+    "title": "Infinite Loop in UserDisplay Component",
+    "description": "useEffect on line 16 triggers infinite loop",
+    "importance": "Dire",
+    "created_by": "GCJ2",
+    "status": 1,
+    "assigned_to": "CodyyLee",
+    "last_updated_by": "GCJ2",
+    "created_at": "2020-07-29 17:24:22",
+    "updated_at": "2020-07-29 17:24:22"
+  },
+  {
+    "id": 2,
+    "title": "CSS issues in Header",
+    "description": "Header not responding to media queries",
+    "importance": "Minor",
+    "created_by": "GCJ2",
+    "status": 1,
+    "assigned_to": "Reececap",
+    "last_updated_by": "GCJ2",
+    "created_at": "2020-07-29 17:24:22",
+    "updated_at": "2020-07-29 17:24:22"
+  },
+  {
+    "id": 3,
+    "title": "JSON Web Tokens Not Active",
+    "description": "JSON Web Tokens need to replace session cookies",
+    "importance": "Major",
+    "created_by": "CodyyLee",
+    "status": 0,
+    "assigned_to": "QuieroPizza",
+    "last_updated_by": "CodyyLee",
+    "created_at": "2020-07-29 17:24:22",
+    "updated_at": "2020-07-29 17:24:22"
+  }
 ]
 ```
 
 </details>
 
 <!------------- Get Issue by issue ID ------------->
-
 
 <details>
 
@@ -370,36 +371,36 @@ Object contains issue information as well as comments attached to issue
 
 ```json
 {
-    "id": 1,
-    "title": "Infinite Loop in UserDisplay Component",
-    "description": "useEffect on line 16 triggers infinite loop",
-    "importance": "Dire",
-    "created_by": "GCJ2",
-    "status": 1,
-    "assigned_to": "CodyyLee",
-    "last_updated_by": "Reececap",
-    "created_at": "2020-07-29 17:24:22",
-    "updated_at": "2020-07-29 17:24:22",
-    "comments": [
-        {
-            "commentId": 34,
-            "comment": "Updated useEffect dependency array.",
-            "createdBy": "CodyLee",
-            "createdAt": "2020-07-29 17:24:22"
-        },
-        {
-            "commentId": 35,
-            "comment": "Infinite loop fixed, flagged for closing.",
-            "createdBy": "ReeceCap",
-            "createdAt": "2020-07-29 17:24:22"
-        },
-{
-            "commentId": 36,
-            "comment": "Issue closed",
-            "createdBy": "GCJ2",
-            "createdAt": "2020-07-29 17:24:22"
-        }
-    ]
+  "id": 1,
+  "title": "Infinite Loop in UserDisplay Component",
+  "description": "useEffect on line 16 triggers infinite loop",
+  "importance": "Dire",
+  "created_by": "GCJ2",
+  "status": 1,
+  "assigned_to": "CodyyLee",
+  "last_updated_by": "Reececap",
+  "created_at": "2020-07-29 17:24:22",
+  "updated_at": "2020-07-29 17:24:22",
+  "comments": [
+    {
+      "commentId": 34,
+      "comment": "Updated useEffect dependency array.",
+      "createdBy": "CodyLee",
+      "createdAt": "2020-07-29 17:24:22"
+    },
+    {
+      "commentId": 35,
+      "comment": "Infinite loop fixed, flagged for closing.",
+      "createdBy": "ReeceCap",
+      "createdAt": "2020-07-29 17:24:22"
+    },
+    {
+      "commentId": 36,
+      "comment": "Issue closed",
+      "createdBy": "GCJ2",
+      "createdAt": "2020-07-29 17:24:22"
+    }
+  ]
 }
 ```
 
@@ -424,30 +425,30 @@ assigned to that particular user ID
 
 ```json
 [
-    {
-        "id": 3,
-        "title": "JSON Web Tokens Not Active",
-        "description": "JSON Web Tokens need to replace session cookies",
-        "importance": "Major",
-        "assigned_to": "QuieroPizza",
-        "created_by": "CodyyLee",
-        "status": 0,
-        "last_updated_by": "GCJ2",
-        "created_at": "2020-07-29 17:24:22",
-        "updated_at": "2020-07-29 17:24:22"
-    },
-    {
-        "id": 4,
-        "title": "Test 4",
-        "description": "Test 4",
-        "importance": "Major",
-        "assigned_to": "QuieroPizza",
-        "created_by": "CodyyLee",
-        "status": 0,
-        "last_updated_by": "GCJ2",
-        "created_at": "2020-07-29 17:24:22",
-        "updated_at": "2020-07-29 17:24:22"
-    }
+  {
+    "id": 3,
+    "title": "JSON Web Tokens Not Active",
+    "description": "JSON Web Tokens need to replace session cookies",
+    "importance": "Major",
+    "assigned_to": "QuieroPizza",
+    "created_by": "CodyyLee",
+    "status": 0,
+    "last_updated_by": "GCJ2",
+    "created_at": "2020-07-29 17:24:22",
+    "updated_at": "2020-07-29 17:24:22"
+  },
+  {
+    "id": 4,
+    "title": "Test 4",
+    "description": "Test 4",
+    "importance": "Major",
+    "assigned_to": "QuieroPizza",
+    "created_by": "CodyyLee",
+    "status": 0,
+    "last_updated_by": "GCJ2",
+    "created_at": "2020-07-29 17:24:22",
+    "updated_at": "2020-07-29 17:24:22"
+  }
 ]
 ```
 
@@ -461,8 +462,8 @@ assigned to that particular user ID
 
 <b>Endpoint:</b> `/issues`
 
-Request body requires a title, description, importance, 
-created_by(user ID), last_updated_by(user ID) and 
+Request body requires a title, description, importance,
+created_by(user ID), last_updated_by(user ID) and
 assigned_to(user ID)
 
 Token required
@@ -471,24 +472,22 @@ Token required
 
 ```json
 {
-    "title": "Update README",
-    "description": "Test 5",
-    "importance": "Major",
-    "created_by": 1,
-    "last_updated_by": 1,
-    "assigned_to": 3
+  "title": "Update README",
+  "description": "Test 5",
+  "importance": "Major",
+  "created_by": 1,
+  "last_updated_by": 1,
+  "assigned_to": 3
 }
 ```
 
-On success, returns status code 201, the user object, 
+On success, returns status code 201, the user object,
 and the id of the issue created
 
-
 ```json
-[
-    13
-]
+[13]
 ```
+
 </details>
 
 <!------------- Delete issue by ID ------------->
@@ -496,7 +495,7 @@ and the id of the issue created
 <details>
 <summary><b>DELETE - Delete issue by ID</b></summary>
 
-<b>Endpoint:</b> `/issues/:id` 
+<b>Endpoint:</b> `/issues/:id`
 
 No request body needed
 
@@ -507,9 +506,10 @@ Only managers can delete issues
 On success, returns status code 200 and success message
 
 <i>(Example: baseURL/users/21)</i>
+
 ```json
 {
-    "message": "Issue deleted"
+  "message": "Issue deleted"
 }
 ```
 
@@ -517,27 +517,26 @@ On success, returns status code 200 and success message
 
 <!------------- Edit an issue by ID ------------->
 
-
 <details>
 <summary><b>PATCH - Edit an issue by ID</b></summary>
 
-<b>Endpoint:</b> `/users/:id` 
+<b>Endpoint:</b> `/users/:id`
 
 Authorization token required in headers
- 
+
 Only the user and system admin may edit user data
 
-Body of request contains changes to be made 
+Body of request contains changes to be made
 
 <i>(Example: baseURL/issues/12)</i>
 
 ```json
 {
-    "title": "Update README",
-    "description": "Add endpoints",
-    "importance": "Major",
-    "assigned_to": 3,
-    "last_updated_by": 1
+  "title": "Update README",
+  "description": "Add endpoints",
+  "importance": "Major",
+  "assigned_to": 3,
+  "last_updated_by": 1
 }
 ```
 
@@ -545,16 +544,16 @@ On success, returns status code 200 and issue object
 
 ```json
 {
-    "id": 12,
-    "title": "Update README",
-    "description": "Add endpoints",
-    "importance": "Major",
-    "created_by": "GCJ2",
-    "status": 1,
-    "assigned_to": "Reececap",
-    "last_updated_by": "GCJ2",
-    "created_at": "2020-07-29 17:54:17",
-    "updated_at": "2020-07-29 17:54:17"
+  "id": 12,
+  "title": "Update README",
+  "description": "Add endpoints",
+  "importance": "Major",
+  "created_by": "GCJ2",
+  "status": 1,
+  "assigned_to": "Reececap",
+  "last_updated_by": "GCJ2",
+  "created_at": "2020-07-29 17:54:17",
+  "updated_at": "2020-07-29 17:54:17"
 }
 ```
 
@@ -580,37 +579,36 @@ On success, returns status code 200 and array of all comments
 
 ```json
 [
-    {
-        "commentId": 34,
-        "comment": "Updated useEffect dependency array",
-        "createdBy": "GCJ2",
-        "createdAt": "2020-07-29 17:24:22",
-        "issueId": 1,
-        "issue": "Infinite Loop in UserDisplay Component"
-    },
-    {
-        "commentId": 35,
-        "comment": "Test 2",
-        "createdBy": "GCJ2",
-        "createdAt": "2020-07-29 17:24:22",
-        "issueId": 1,
-        "issue": "Infinite Loop in UserDisplay Component"
-    },
-    {
-        "commentId": 36,
-        "comment": "Test 3",
-        "createdBy": "CodyyLee",
-        "createdAt": "2020-07-29 17:24:22",
-        "issueId": 1,
-        "issue": "Infinite Loop in UserDisplay Component"
-    }
+  {
+    "commentId": 34,
+    "comment": "Updated useEffect dependency array",
+    "createdBy": "GCJ2",
+    "createdAt": "2020-07-29 17:24:22",
+    "issueId": 1,
+    "issue": "Infinite Loop in UserDisplay Component"
+  },
+  {
+    "commentId": 35,
+    "comment": "Test 2",
+    "createdBy": "GCJ2",
+    "createdAt": "2020-07-29 17:24:22",
+    "issueId": 1,
+    "issue": "Infinite Loop in UserDisplay Component"
+  },
+  {
+    "commentId": 36,
+    "comment": "Test 3",
+    "createdBy": "CodyyLee",
+    "createdAt": "2020-07-29 17:24:22",
+    "issueId": 1,
+    "issue": "Infinite Loop in UserDisplay Component"
+  }
 ]
 ```
 
 </details>
 
 <!------------- Get Comment by Comment ID ------------->
-
 
 <details>
 
@@ -631,21 +629,20 @@ and name for which it belongs, who wrote the comment, and when
 
 ```json
 [
-    {
-        "commentId": 34,
-        "issue": "Infinite Loop in UserDisplay Component",
-        "issueId": 1,
-        "comment": "Updated useEffect dependency array",
-        "createdBy": "GCJ2",
-        "created_at": "2020-07-29 17:24:22"
-    }
+  {
+    "commentId": 34,
+    "issue": "Infinite Loop in UserDisplay Component",
+    "issueId": 1,
+    "comment": "Updated useEffect dependency array",
+    "createdBy": "GCJ2",
+    "created_at": "2020-07-29 17:24:22"
+  }
 ]
 ```
 
 </details>
 
 <!------------- Get Comment by Issue ID ------------->
-
 
 <details>
 
@@ -666,32 +663,33 @@ and name for which it belongs, who wrote the comment, and when
 
 ```json
 [
-    {
-        "commentId": 38,
-        "comment": "Updated media queries for mobile",
-        "createdBy": "GCJ2",
-        "createdAt": "2020-07-29 17:24:22"
-    },
-    {
-        "commentId": 39,
-        "comment": "Added mixins",
-        "createdBy": "ReeceCap",
-        "createdAt": "2020-07-29 17:24:22"
-    },
-    {
-        "commentId": 40,
-        "comment": "Removed mixins",
-        "createdBy": "CodyLee",
-        "createdAt": "2020-07-29 17:24:22"
-    },
-    {
-        "commentId": 44,
-        "comment": "Flagged for closing",
-        "createdBy": "CodyyLee",
-        "createdAt": "2020-07-29 17:24:22"
-    }
+  {
+    "commentId": 38,
+    "comment": "Updated media queries for mobile",
+    "createdBy": "GCJ2",
+    "createdAt": "2020-07-29 17:24:22"
+  },
+  {
+    "commentId": 39,
+    "comment": "Added mixins",
+    "createdBy": "ReeceCap",
+    "createdAt": "2020-07-29 17:24:22"
+  },
+  {
+    "commentId": 40,
+    "comment": "Removed mixins",
+    "createdBy": "CodyLee",
+    "createdAt": "2020-07-29 17:24:22"
+  },
+  {
+    "commentId": 44,
+    "comment": "Flagged for closing",
+    "createdBy": "CodyyLee",
+    "createdAt": "2020-07-29 17:24:22"
+  }
 ]
 ```
+
 </details>
 
 <!------------- Post a new comment ------------->
@@ -702,8 +700,8 @@ and name for which it belongs, who wrote the comment, and when
 
 <b>Endpoint:</b> `/comments`
 
-Request body requires a title, description, importance, 
-created_by(user ID), last_updated_by(user ID) and 
+Request body requires a title, description, importance,
+created_by(user ID), last_updated_by(user ID) and
 assigned_to(user ID)
 
 Token required
@@ -712,9 +710,9 @@ Token required
 
 ```json
 {
-    "comment": "Updated migrations",
-    "createdBy": 1,
-    "issue": 3
+  "comment": "Updated migrations",
+  "createdBy": 1,
+  "issue": 3
 }
 ```
 
@@ -725,25 +723,25 @@ comment body, comment author, and when comment was created
 
 ```json
 [
-    {
-        "commentId": 46,
-        "issue": "JSON Web Tokens Not Active",
-        "issueId": 3,
-        "comment": "Updated migrations",
-        "createdBy": "GCJ2",
-        "created_at": "2020-07-29 18:48:15"
-    }
+  {
+    "commentId": 46,
+    "issue": "JSON Web Tokens Not Active",
+    "issueId": 3,
+    "comment": "Updated migrations",
+    "createdBy": "GCJ2",
+    "created_at": "2020-07-29 18:48:15"
+  }
 ]
 ```
-</details>
 
+</details>
 
 <!------------- Delete comment by ID ------------->
 
 <details>
 <summary><b>DELETE - Delete issue by ID</b></summary>
 
-<b>Endpoint:</b> `/issues/:id` 
+<b>Endpoint:</b> `/issues/:id`
 
 No request body needed
 
@@ -754,9 +752,10 @@ Users can only delete their own comments; Managers can delete all comments
 On success, returns status code 200 and success message
 
 <i>(Example: baseURL/users/21)</i>
+
 ```json
 {
-    "message": "Comment deleted"
+  "message": "Comment deleted"
 }
 ```
 
@@ -764,23 +763,22 @@ On success, returns status code 200 and success message
 
 <!------------- Edit an comment by ID ------------->
 
-
 <details>
 <summary><b>PATCH - Edit an issue by ID</b></summary>
 
-<b>Endpoint:</b> `/comments/:id` 
+<b>Endpoint:</b> `/comments/:id`
 
 Authorization token required in headers
- 
+
 Only the user and system admin may edit user data
 
-Body of request contains changes to be made 
+Body of request contains changes to be made
 
 <i>(Example: baseURL/comments/34)</i>
 
 ```json
 {
-    "comment": "Never mind its fine"
+  "comment": "Never mind its fine"
 }
 ```
 
@@ -788,14 +786,14 @@ On success, returns status code 200 and comment
 
 ```json
 [
-    {
-        "commentId": 34,
-        "comment": "Never mind its fine",
-        "createdBy": "GCJ2",
-        "createdAt": "2020-07-29 17:24:22",
-        "issueId": 1,
-        "issue": "Infinite Loop in UserDisplay Component"
-    }
+  {
+    "commentId": 34,
+    "comment": "Never mind its fine",
+    "createdBy": "GCJ2",
+    "createdAt": "2020-07-29 17:24:22",
+    "issueId": 1,
+    "issue": "Infinite Loop in UserDisplay Component"
+  }
 ]
 ```
 
